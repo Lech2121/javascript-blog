@@ -1,7 +1,8 @@
 'use strict';
 
 function titleClickHandler(event){
-  
+  event.preventDefault();
+  const clickedElement = this;
   console.log('Link was clicked!');
   console.log(event)
  
@@ -13,10 +14,10 @@ for(let activeLink of activeLinks){
   activeLink.classList.remove('active');
 }
 
-  /* add class 'active' to the clicked link */
-  const clickedElement = this;
+  /* [DONE] add class 'active' to the clicked link */
+  
 console.log('clickedElement:', clickedElement)
-this.classList.add("active");
+this.classList.add("active"); // Zadzialalo dopiero w podwojnym cudzyslowie, dlaczego?
 
 
 
@@ -30,9 +31,20 @@ for(let activeArticle of activeArticles){
 
   /* get 'href' attribute from the clicked link */
 
+  const articleSelector = this.getAttribute("href")
+  console.log('articleSelector:', articleSelector)
+
+
   /* find the correct article using the selector (value of 'href' attribute) */
 
+  const targetArticle = document.querySelector(articleSelector);
+  console.log("targetArticle:", targetArticle)
+
   /* add class 'active' to the correct article */
+  
+  targetArticle.classList.add("active");
+
+
 }
 
 const links = document.querySelectorAll('.titles a');
