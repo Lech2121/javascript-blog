@@ -182,40 +182,22 @@ addClickListenersToTags();
 
 function generateAuthors(){
   /* find all articles */
-  const authors = document.querySelectorAll(optArticleAuthorSelector);
-  console.log('Authors:', authors);
-
+  const articles = document.querySelectorAll(optArticleSelector);
+ 
   /* START LOOP: for every article: */
-  for(let author of authors){
+  for(let article of articles){
 
+    const authorWrapper = article.querySelector(optArticleAuthorSelector);
     /* make html variable with empty string */
 
-    let html = '';
-
     /* get tags from data-tags attribute */
-    
-    const articleAuthors = author.getAttribute('data-author');
-    console.log('articleAuthors:', articleAuthors);
+    const author = article.getAttribute('data-author');
 
-    /* START LOOP: for each tag */
-    
-      for(let author of articleAuthors){
-        console.log('author:', author);
-      
-        /* generate HTML of the link */
-      
-      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+    const linkHTML = '<li><a href="#author-' + author + '">' + author + '</a></li>';
       console.log('Generated HTML:', linkHTML);
-      
-      /* add generated code to html variable */
-      
-      html = html + linkHTML;
-      
-    /* END LOOP: for each tag */
-  }
-    /* insert HTML of all the links into the tags wrapper */
 
-    authors.innerHTML = html;
+    /* insert HTML of all the links into the tags wrapper */
+    authorWrapper.innerHTML = linkHTML;
 
   /* END LOOP: for every article: */
 }
